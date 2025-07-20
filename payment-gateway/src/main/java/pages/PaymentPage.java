@@ -1,7 +1,9 @@
 package pages;
 
 import java.time.Duration;
-import utils.ScreenshotUtil;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -11,9 +13,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-
-
 
 public class PaymentPage {
     WebDriver driver;
@@ -35,25 +34,20 @@ public class PaymentPage {
         wait.until(ExpectedConditions.visibilityOf(cardNumber));
         cardNumber.sendKeys(card);
 
-        // ✅ Sanitize and select month
         String cleanMonth = mm.replaceAll("[^0-9]", "");
         if (cleanMonth.length() == 1) {
             cleanMonth = "0" + cleanMonth;
         }
-        System.out.println("Selecting cleaned month: " + cleanMonth);
         wait.until(ExpectedConditions.visibilityOf(month));
         new Select(month).selectByVisibleText(cleanMonth);
 
-        // ✅ Sanitize and select year
         String cleanYear = yy.replaceAll("[^0-9]", "");
-        System.out.println("Selecting cleaned year: " + cleanYear);
         wait.until(ExpectedConditions.visibilityOf(year));
         new Select(year).selectByVisibleText(cleanYear);
 
-        // ✅ Sanitize and validate CVV
         String cleanCvv = cvvNum.replaceAll("[^0-9]", "");
         if (!cleanCvv.matches("\\d{3}")) {
-            throw new IllegalArgumentException("❌ Invalid CVV entered: " + cvvNum);
+            throw new IllegalArgumentException("Invalid CVV entered: " + cvvNum);
         }
 
         wait.until(ExpectedConditions.visibilityOf(cvv));
@@ -70,21 +64,24 @@ public class PaymentPage {
             alertWait.until(ExpectedConditions.alertIsPresent());
             Alert alert = driver.switchTo().alert();
             String actualText = alert.getText();
-            System.out.println("Alert message: " + actualText);
-            Assert.assertEquals(actualText, expectedText, "Alert message mismatch!");
-            alert.accept(); // ✅ Don't forget to accept it
+            if (!actualText.equals(expectedText)) {
+                throw new AssertionError(
+                    "Alert message mismatch! Expected: " + expectedText + ", but got: " + actualText
+                );
+            }
+            alert.accept();
         } catch (Exception e) {
-            Assert.fail("An error occurred while verifying alert: " + e.getMessage());
+            throw new RuntimeException("Error while verifying alert.", e);
         }
     }
+
     public void handleAlertIfPresent() {
         try {
             wait.until(ExpectedConditions.alertIsPresent());
             Alert alert = driver.switchTo().alert();
-            System.out.println("Optional Alert: " + alert.getText());
             alert.accept();
         } catch (TimeoutException e) {
-            System.out.println("No alert appeared.");
+            // No alert — ignore
         }
     }
 

@@ -1,0 +1,8 @@
+pages\GenerateCardPage.class
+pages\BasePage.class
+pages\PaymentPage.class
+pages\PurchaseToyPage.class
+pages\HomePage.class
+pages\PaymentSuccessPage.class
+utils\ScreenshotUtil.class
+pages\PaymentResultPage.class
