@@ -1,49 +1,59 @@
+# 🚀 Guru99 Automation Framework
 
-# guru99-automation
- Automation framework for Guru99 Telecom and Payment Gateway projects using Selenium, Cucumber, TestNG.
-=======
-\# Guru99 Telecom Automation Project
+This repository contains the automation framework for testing two web applications:
+- ✅ [Guru99 Telecom](https://demo.guru99.com/telecom/index.html)
+- ✅ [Guru99 Payment Gateway](https://demo.guru99.com/payment-gateway/index.php)
 
-
-
-This repository contains automated test scripts for the Guru99 Telecom website using Selenium WebDriver, Cucumber (BDD), TestNG, and Page Object Model.
-
-
+The framework is built using **Selenium WebDriver**, **Cucumber (BDD)**, **TestNG**, **ExtentReports**, and **Page Object Model (POM)** design pattern.
 
 ---
 
+## 🧰 Tech Stack
 
-
-\## 🧪 Technologies Used
-
-
-
-\- Java 16
-
-\- Selenium WebDriver
-
-\- Cucumber (BDD)
-
-\- TestNG
-
-\- Maven
-
-\- ExtentReports
-
-\- WebDriverManager
-
-\- Page Object Model
-
-
+- Java 21  
+- Selenium 4.8.3  
+- Cucumber  
+- TestNG  
+- Maven  
+- ExtentReports  
+- WebDriverManager  
+- Page Object Model (POM)
 
 ---
 
+## 📁 Folder Structure
 
+guru99-automation/
+│
+├── telecom/ → Guru99 Telecom Project
+│ ├── features/ → Cucumber feature files
+│ ├── pages/ → Page Object classes
+│ ├── stepDefinitions/ → Cucumber step definitions
+│ ├── runners/ → TestNG runners
+│ └── test-output/ → ExtentReports output
+│
+├── payment-gateway/ → Guru99 Payment Gateway Project
+│ ├── features/
+│ ├── pages/
+│ ├── stepDefinitions/
+│ ├── runners/
+│ └── test-output/
+│
+└── README.md
+---
 
-\## 📁 Folder Structure
+## 🛠️ How to Run the Tests
 
+### ✅ Prerequisites
 
+- Java 21+ installed
+- Maven installed
+- Chrome browser
+- Internet connection
 
+### 🔃 Steps to Execute
 
-
-
+1. **Clone the project**
+```bash
+git clone https://github.com/Hemaranirajput/guru99-automation.git
+cd guru99-automation
