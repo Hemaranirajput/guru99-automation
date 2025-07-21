@@ -1,0 +1,7 @@
+stepDefinitions\AssignTariffSteps.class
+testRunner\TestRunner.class
+stepDefinitions\AddTariffSteps.class
+stepDefinitions\AddCustomerSteps.class
+stepDefinitions\GenerateInvoiceSteps.class
+hooks\Hooks.class
+stepDefinitions\PayBillingSteps.class

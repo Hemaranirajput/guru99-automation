@@ -1,0 +1,27 @@
+# Ignore target folders for both projects
+telecom/target/
+payment-gateway/target/
+
+# Test output and reports
+telecom/test-output/
+payment-gateway/test-output/
+
+# Ignore screenshots
+**/screenshots/
+
+# Class files
+**/*.class
+
+# Eclipse project files
+.project
+.classpath
+.settings/
+**/.settings/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+
+# OS generated files
+.DS_Store
+Thumbs.db
